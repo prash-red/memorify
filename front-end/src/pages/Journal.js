@@ -33,7 +33,6 @@ export const Journal = () => {
                             className="w-[33vw] h-[55vh] ml-4 p-2 absolute top-[27vh] left-[8vw] bg-transparent overflow-auto"
                         />
 
-
                         <img src={entry} alt="journal entry" className="h-screen w-[55vw] p-5" />
                     </div>
 
