@@ -1,4 +1,4 @@
-import newparchment from "./new-parchment.png";
+import newparchment from "./assets/new-parchment.png";
 
 export const Login = () => {
     return (

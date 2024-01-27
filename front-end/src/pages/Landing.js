@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import linebreak from "./rustic-line-break.png";
-import oldparchment from "./old-parchment.png";
+import linebreak from "./assets/rustic-line-break.png";
+import oldparchment from "./assets/old-parchment.png";
 
 export const Landing = () => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import entry from './journal_entry.png';
-import quill from "./quill.png";
-import oldparchment from "./old-parchment.png";
+import entry from './assets/journal_entry.png';
+import quill from "./assets/quill.png";
+import oldparchment from "./assets/old-parchment.png";
 
 export const Journal = () => {
     const navigate = useNavigate();
