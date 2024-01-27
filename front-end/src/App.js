@@ -5,6 +5,7 @@ import { Journal } from './pages/Journal';
 import { Album } from './pages/Album';
 import { Characters } from './pages/Characters';
 import { Gallery } from './pages/Gallery';
+import {Login} from "./pages/Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
           <Routes>
             <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/album" element={<Album />} />
             <Route path="/characters" element={<Characters />} />
