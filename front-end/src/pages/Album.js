@@ -6,6 +6,7 @@ export const Album = () => {
     const handleButtonClick = () => {
         // navigate("/input")
     }
+    
     return (
         <div>
             Album

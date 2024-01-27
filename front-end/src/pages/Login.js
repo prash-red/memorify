@@ -1,14 +1,16 @@
-export const Login=() => {
+import newparchment from "./new-parchment.png";
+
+export const Login = () => {
     return (
         <>
-            <div className="h-screen w-screen bg-[#F7F2EC] flex flex-col items-center justify-center">
+            <div className="h-screen w-screen bg-[#F7F2EC] flex flex-col items-center justify-center" style={{ backgroundImage: `url(${newparchment})`}}> 
                 <h1 id="cinzel" className="text-6xl text-[#6A482F] drop-shadow-lg mb-4">
                     LogIn
                 </h1>
                 <div className="flex flex-col items-center justify-center m-4">
-                    <div className="mb-8 flex items-center">
+                    <div className="mb-8 flex w-full items-center justify-between">
                         <label id="playfair" className="mb-2 text-[#6A482F] text-2xl">
-                            Email ID:
+                            EMAIL
                         </label>
                         <input type="text" id="email" className="ml-9 text-2xl" />
                     </div>
@@ -16,7 +18,7 @@ export const Login=() => {
 
                     <div className="mb-4 flex items-center">
                         <label id="playfair" className="mb-2 text-[#6A482F] text-2xl">
-                            Password:
+                            PASSWORD
                         </label>
                         <input type="password" id="password" className="ml-9 text-2xl" />
                     </div>
