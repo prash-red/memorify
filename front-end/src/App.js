@@ -6,6 +6,7 @@ import { Album } from './pages/Album';
 import { Characters } from './pages/Characters';
 import { Gallery } from './pages/Gallery';
 import {Login} from "./pages/Login";
+import {Signup} from "./pages/Signup";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/album" element={<Album />} />
             <Route path="/characters" element={<Characters />} />
