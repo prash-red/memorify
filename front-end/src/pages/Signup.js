@@ -15,7 +15,7 @@ export const Signup = () => {
                         <input type="text" id="email" className="ml-9 text-2xl" />
                     </div>
 
-                    <div className="mb-8 flex items-center">
+                    <div className="mb-8 flex w-full items-center justify-between">
                         <label id="playfair" className="mb-2 text-[#6A482F] text-2xl">
                             USERNAME
                         </label>
@@ -24,7 +24,7 @@ export const Signup = () => {
 
 
 
-                    <div className="mb-4 flex items-center">
+                    <div className="mb-4 flex w-full items-center justify-between">
                         <label id="playfair" className="mb-2 text-[#6A482F] text-2xl">
                             PASSWORD
                         </label>
