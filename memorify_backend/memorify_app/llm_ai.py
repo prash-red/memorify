@@ -22,7 +22,7 @@ class LLM_AI:
     
     def get_personality(self, journal_entry: str, character) -> str:
         """Returns a personality description of a character based on a journal entry"""
-        prompt = f'Journal Entry: {journal_entry}\n Character: {character}\n Ananlyze the journal entry and generate a personality descriptio for the given character in this journal entry. The response must be in the format: charactername: personality description.The description should be just one paragraph. Dont include anything else'
+        prompt = f'Journal Entry: {journal_entry}\n Character: {character}\n Ananlyze the journal entry and generate a personality descriptio for the given character in this journal entry. The response must be in the format: charactername: personality description.The description should be just one paragraph without any newline characters. Dont include anything else'
         response = self.cohere.generate(
             prompt
         )
@@ -30,7 +30,7 @@ class LLM_AI:
     
     def modify_personality(self, journal_entry: str, character:str, personality_description: str) -> str:
         """Modifies the personality traits of a character based on a journal entry"""
-        prompt = f'Journal Entry: {journal_entry}\n Character: {character}\n Personality: {personality_description}\n Modify the personality description of the given character based on this new journal entry. The response must be in the format: charactername: personality description. The description should be just one paragraph. Dont include anything else'
+        prompt = f'Journal Entry: {journal_entry}\n Character: {character}\n Personality: {personality_description}\n Modify the personality description of the given character based on this new journal entry. The response must be in the format: charactername: personality description. The description should be just one paragraph without any newline characters. Dont include anything else'
         response = self.cohere.generate(
             prompt
         )
