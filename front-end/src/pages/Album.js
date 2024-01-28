@@ -8,6 +8,7 @@ import topleft from "./assets/top-left.png";
 import topright from "./assets/top-right.png";
 import botleft from "./assets/bot-left.png";
 import botright from "./assets/bot-right.png";
+import write from "./assets/write.png";
 
 export const Album = () => {
     const navigate = useNavigate();
@@ -28,24 +29,30 @@ export const Album = () => {
                         <img src={page} alt="Entry Image" className="w-full max-h-full h-auto z-0" />
                     </div>
 
-                    <div id="quattro" className="w-full text-left mt-10">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                    et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua.
-                    </div>
-                </div>
+                    <div id="quattro" className="w-full h-1/3 text-xl text-left mt-10 flex flex-row">
+                        <div className="w-1/2 h-full flex flex-col justify-between">
+                            <div className="w-full h-full flex flex-col">
+                                <span>John Doe </span>
+                                <span>john.doe@google.com</span>
+                            </div>
 
-                <div className="w-10/12 flex flex-row items-center justify-between mt-32">
-                    <div className="flex flex-row items-center justify-center space-x-4">
-                        <button><img src={back} alt="Previous page" className="h-12"/></button>
-                        <button><img src={gallery} alt="Album Gallery" className="h-14"/></button>
+                            <div className="flex flex-row items-end space-x-4">
+                                <button><img src={back} alt="Previous page" className="h-12"/></button>
+                                <button><img src={write} alt="New Journal" className="h-20"/></button>
+                            </div>
+                        </div>
+
+                        <div className="w-1/2 h-full flex flex-col items-center">
+                            <span>SCROLL 1</span>
+                            <span>SCROLL 2</span>
+                            <span>SCROLL 3</span>
+                        </div>
                     </div>
-                    <h2 id="cinzel-light" className="font-medium text-lg">JOURNAL TITLE</h2>
                 </div>
             </div>
 
             <div className="h-full w-1/2 flex flex-col items-center">
-                <div className="h-3/4 w-10/12">
+            <div className="h-3/4 w-10/12">
                     <div className="relative h-3/4 w-full bg-white mt-10 p-5">
                         <img src={topleft} alt="corner" className="absolute top-[-10px] left-[-10px] z-10" />
                         <img src={topright} alt="corner" className="absolute top-[-10px] right-[-10px] z-10" />
@@ -54,16 +61,24 @@ export const Album = () => {
                         <img src={page} alt="Entry Image" className="w-full max-h-full h-auto z-0" />
                     </div>
 
-                    <div id="quattro" className="w-full text-left mt-10">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                    et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua.
-                    </div>
-                </div>
+                    <div id="quattro" className="w-full h-1/3 text-xl text-left mt-10 flex flex-row">
+                        <div className="w-1/2 h-full flex flex-col items-center">
+                            <span>SCROLL 1</span>
+                            <span>SCROLL 2</span>
+                            <span>SCROLL 3</span>
+                        </div>
 
-                <div className="w-10/12 flex flex-row items-center justify-between mt-32">
-                    <h2 id="cinzel-light" className="font-medium text-lg">JOURNAL TITLE</h2>
-                    <button><img src={next} alt="Previous page" className="h-12"/></button>
+                        <div className="w-1/2 h-full flex flex-col justify-between">
+                            <div className="w-full h-full flex flex-col">
+                                <span>John Doe </span>
+                                <span>john.doe@google.com</span>
+                            </div>
+
+                            <div className="flex flex-row items-end justify-end space-x-4">
+                                <button><img src={next} alt="Previous page" className="h-12"/></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
