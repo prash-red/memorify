@@ -11,13 +11,14 @@ import botright from "./assets/bot-right.png";
 import write from "./assets/write.png";
 import scroll from "./assets/scroll.png";
 
+import { useState } from "react";
+
 export const Album = () => {
     const navigate = useNavigate();
 
-    const handleButtonClick = () => {
-        // navigate("/input")
-    }
-    
+    const [leftScrolls, setLeftScrolls] = useState([{"Title": "DAY 1", "Text": "Content"}, {"Title": "DAY 2", "Text": "Content"}])
+    const [rightScrolls, setRightScrolls] = useState([{"Title": "DAY 1", "Text": "Content"}, {"Title": "DAY 2", "Text": "Content"}])
+
     return (
         <div className="h-screen w-screen flex flex-row" style={{ backgroundImage: `url(${newparchment})` }}>
             <div className="h-full w-1/2 flex flex-col items-center border-r-2 border-[#855048]">
@@ -39,31 +40,19 @@ export const Album = () => {
 
                             <div className="flex flex-row items-end space-x-4">
                                 <button><img src={back} alt="Previous page" className="h-12"/></button>
-                                <button><img src={write} alt="New Journal" className="h-20"/></button>
+                                <button onClick={() => {navigate("/journal")}}><img src={write} alt="New Journal" className="h-20"/></button>
                             </div>
                         </div>
 
                         <div className="w-1/2 h-full flex flex-col items-center overflow-y-auto">
-                            <button className="relative">
-                                <img src={scroll} alt="Rolled up scroll" />
-                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 1</span>
-                            </button>
-                            <button className="relative">
-                                <img src={scroll} alt="Rolled up scroll" />
-                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 2</span>
-                            </button>
-                            <button className="relative">
-                                <img src={scroll} alt="Rolled up scroll" />
-                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 3</span>
-                            </button>
-                            <button className="relative">
-                                <img src={scroll} alt="Rolled up scroll" />
-                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 4</span>
-                            </button>
-                            <button className="relative">
-                                <img src={scroll} alt="Rolled up scroll" />
-                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 5</span>
-                            </button>
+                            {leftScrolls.map((s) => {
+                                return(
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">{s.Title}</span>
+                                </button>
+                                );
+                            })}
                         </div>
 
                     </div>
@@ -82,26 +71,14 @@ export const Album = () => {
 
                     <div id="quattro" className="w-full h-1/3 text-xl text-left mt-10 flex flex-row">
                         <div className="w-1/2 h-full flex flex-col items-center overflow-y-auto">
+                            {rightScrolls.map((s) => {
+                                return(
                                 <button className="relative">
                                     <img src={scroll} alt="Rolled up scroll" />
-                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 1</span>
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">{s.Title}</span>
                                 </button>
-                                <button className="relative">
-                                    <img src={scroll} alt="Rolled up scroll" />
-                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 2</span>
-                                </button>
-                                <button className="relative">
-                                    <img src={scroll} alt="Rolled up scroll" />
-                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 3</span>
-                                </button>
-                                <button className="relative">
-                                    <img src={scroll} alt="Rolled up scroll" />
-                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 4</span>
-                                </button>
-                                <button className="relative">
-                                    <img src={scroll} alt="Rolled up scroll" />
-                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 5</span>
-                                </button>
+                                );
+                            })}
                         </div>
 
                         <div className="w-1/2 h-full flex flex-col justify-between">

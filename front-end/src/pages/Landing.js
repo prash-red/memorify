@@ -14,9 +14,9 @@ export const Landing = () => {
                 <img src={linebreak} alt="Line Break" className="object-fill w-full h-full"/>
             </div>
     
-            <h2 id="playfair" className="text-xl max-w-3xl font-medium mb-12">
-                Capture your cherished moments with our innovative photo album experience 
-                and explore the magic of reliving your memories in a unique and engaging way!
+            <h2 id="cinzel-light" className="text-xl max-w-3xl font-semibold mb-12">
+                An innovative way to commemorate and reflect on life's journey, as well as
+                everyone  who’s been with us along the way.
             </h2>
             <div className="flex space-x-16 text-lg text-[#DDD0C8]">
                 <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium" onClick={() => {handleButtonClick("login")}} >LOG IN</button>

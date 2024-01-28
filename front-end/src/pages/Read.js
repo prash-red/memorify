@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import entry from "./assets/journal_entry.png";
 import back from "./assets/turn-back.png"
 import lamp from "./assets/lamp.png"
 import oldparchment from "./assets/old-parchment.png"
 
-
 export const Read = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="h-screen w-screen overflow-y-hidden" style={{ backgroundImage: `url(${oldparchment})`}}>
-            <button>
+            <button onClick={() => navigate("/album")}>
                 <img src={back} alt="back" className="absolute top-[20vh] left-[30vw] h-[5vh]" />
             </button>
             <div className="flex">
