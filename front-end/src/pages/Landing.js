@@ -19,8 +19,8 @@ export const Landing = () => {
                 everyone  who’s been with us along the way.
             </h2>
             <div className="flex space-x-16 text-lg text-[#DDD0C8]">
-                <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium" onClick={() => {handleButtonClick("journal")}} >LOG IN</button>
-                {/*<button id="button-shadow" className="bg-[#61544C] py-2 px-12 font-medium" onClick={() => {handleButtonClick("signup")}} >SIGN UP</button>*/}
+                <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium" onClick={() => {handleButtonClick("login")}} >LOG IN</button>
+                <button id="button-shadow" className="bg-[#61544C] py-2 px-12 font-medium" onClick={() => {handleButtonClick("signup")}} >SIGN UP</button>
             </div>
 
         </div>

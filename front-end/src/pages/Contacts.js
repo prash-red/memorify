@@ -37,7 +37,7 @@ export const Contacts = () =>{
 
                         <div className="mb-4 flex w-full items-center justify-between">
                             <label id="playfair" className="text-[#6A482F] text-2xl">
-                                PRASHANTH
+                                SARVA
                             </label>
                             <input id="cinzel-light" type="text" className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
                         </div>
@@ -96,7 +96,7 @@ export const Contacts = () =>{
                                 </button>
                             </div>
                     </div>
-                    <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium mt-[30vh] ml-[55vh] text-[#DDD0C8]" onClick={()=>handleButtonClick('album')} >Next</button>
+                    <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium mt-[30vh] ml-[55vh] text-[#DDD0C8]" onClick={()=>handleButtonClick('loadingtwo')} >Next</button>
                 </div>
 
 

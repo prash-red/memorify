@@ -9,6 +9,7 @@ import {Login} from "./pages/Login";
 import {Signup} from "./pages/Signup";
 import {Read} from "./pages/Read";
 import {Contacts} from "./pages/Contacts";
+import { LoadingTwo } from './pages/LoadingTwo';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/journal" element={<Journal />} />
             <Route path="/album" element={<Album />} />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/loadingtwo" element={<LoadingTwo />} />
             <Route path="/gallery" element={<Gallery />} />
           </Routes>
         </Router>

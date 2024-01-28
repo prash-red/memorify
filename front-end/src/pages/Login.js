@@ -1,7 +1,11 @@
 import newparchment from "./assets/new-parchment.png";
+import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 
 export const Login = () => {
+
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState("");
 
@@ -56,7 +60,7 @@ export const Login = () => {
                                onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                     <div className="flex space-x-16 text-lg text-[#DDD0C8] mt-10">
-                        <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium" onClick={handleLogin}>LOG IN</button>
+                        <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium" onClick={() => {navigate("/journal")}}>LOG IN</button>
                         {/*<button id="button-shadow" className="bg-[#61544C] py-2 px-12 font-medium">SIGN UP</button>*/}
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import { useState } from "react";
 export const Journal = () => {
     const navigate = useNavigate();
     const handleButtonClick = () => {
-        navigate("/contacts")
+        navigate("/loading")
     }
 
     const [content, setContent] = useState("");
