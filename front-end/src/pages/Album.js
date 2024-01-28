@@ -10,6 +10,7 @@ import botleft from "./assets/bot-left.png";
 import botright from "./assets/bot-right.png";
 import write from "./assets/write.png";
 
+
 export const Album = () => {
     const navigate = useNavigate();
 

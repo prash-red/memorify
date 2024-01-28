@@ -3,6 +3,7 @@ import back from "./assets/turn-back.png"
 import lamp from "./assets/lamp.png"
 import oldparchment from "./assets/old-parchment.png"
 
+
 export const Read = () => {
     return (
         <div className="h-screen w-screen overflow-y-hidden" style={{ backgroundImage: `url(${oldparchment})`}}>
