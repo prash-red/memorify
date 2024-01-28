@@ -43,7 +43,7 @@ class User:
 
     def generate_avatar(self, personality_descrption: str, art_style: str):
         """Generate avatar based on personality and art style"""
-        prompt = f'/imagine Art Style: {art_style}, Generate an avatar based on the Personality: {personality_descrption} and art style. The avatar should be a cartoon image of the character with the given personality and art style.'
+        prompt = f'/imagine Art Style: {art_style}, Generate an avatar based on the Personality: {personality_descrption} and art style. The avatar should be a cartoon image of the character with the given personality and art style. --aspect 5:4'
         self.driver.find_element(By.CSS_SELECTOR, 'span.emptyText_c03d90').send_keys(prompt, Keys.ENTER)
         self.driver.find_element(By.CSS_SELECTOR, 'span.emptyText_c03d90').send_keys(prompt, Keys.ENTER)
         self.log(prompt)
@@ -61,7 +61,7 @@ class User:
         right = left + width/2
         bottom = top + height/2
         im = im.crop((left, top, right, bottom))
-        im.save('image' + str(num) + '.png')
+        # im.save('image' + str(num) + '.png')
         return im.tobytes()
 
     def log(self, msg):
