@@ -2,7 +2,6 @@ import entry from "./assets/journal_entry.png";
 import back from "./assets/turn-back.png"
 import lamp from "./assets/lamp.png"
 import oldparchment from "./assets/old-parchment.png"
-import view from "./assets/view-entry.png"
 
 export const Read = () => {
     return (
