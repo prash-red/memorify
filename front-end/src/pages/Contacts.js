@@ -60,17 +60,42 @@ export const Contacts = () =>{
                 </div>
                 <div className="w-[50vw]">
                     <h1 id="cinzel" className="text-4xl text-[#6A482F] drop-shadow-lg m-5">Select an art style</h1>
-                    <button onClick={handleSimpsons} className="relative" style={{ left:'6rem' }}>
-                        <img
-                            src={simpsons}
-                            alt="simpsons"
-                            className={artStyle === "The Simpsons" ? "h-[45vh]" : "h-[38vh]" || artStyle==="Looney Tunes" ? "h-[38vh] mt-0": ""}
+                    <div className="flex flex-row">
 
-                        />
-                    </button>
-                    <button onClick={handleMarvel} className="relative" style={{ top: '10rem', left:'10rem' }}><img src={marvel} alt="marvel" className={artStyle === "Marvel" ? "h-[45vh]" : "h-[38vh]"}/></button>
-                    <button onClick={handleLooney} className="relative" style={{ top: '18rem', right:'20rem' }}><img src={looney} alt="looney" className={artStyle === "Looney Tunes" ? "h-[30vh]" : "h-[30vh]"} /></button>
+
+                            <div className="flex justify-end">
+                                <button onClick={handleSimpsons}>
+                                    <img
+                                        src={simpsons}
+                                        alt="simpsons"
+                                        className={artStyle === "The Simpsons" ? "h-[45vh]" : "h-[38vh]"}
+                                    />
+                                </button>
+                                <button onClick={handleLooney}>
+                                    <img
+                                        src={looney}
+                                        alt="looney"
+                                        className={artStyle === "Looney Tunes" ? "h-[45vh]" : "h-[38vh]"}
+                                    />
+                                </button>
+                            </div>
+
+
+
+                            <div className="flex justify-center">
+                                <button onClick={handleMarvel}>
+                                    <img
+                                        src={marvel}
+                                        alt="marvel"
+                                        className={artStyle === "Marvel" ? "h-[45vh]" : "h-[38vh]"}
+                                    />
+                                </button>
+                            </div>
+                    </div>
+                    <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium mt-[30vh] ml-[55vh] text-[#DDD0C8]" onClick={() => {}} >Next</button>
                 </div>
+
+
 
 
             </div>
