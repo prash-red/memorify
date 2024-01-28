@@ -23,7 +23,7 @@ export const Login = () => {
                         <input type="password" id="password" className="ml-9 text-2xl" />
                     </div>
                     <div className="flex space-x-16 text-lg text-[#DDD0C8] mt-10">
-                        <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium">LOG IN</button>
+                        <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-semibold text-lg">LOG IN</button>
                         {/*<button id="button-shadow" className="bg-[#61544C] py-2 px-12 font-medium">SIGN UP</button>*/}
                     </div>
                 </div>
