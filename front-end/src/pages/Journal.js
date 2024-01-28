@@ -21,8 +21,8 @@ export const Journal = () => {
             <div className="flex">
                 <div className="relative">
                     <div className="relative">
-                        <textarea id="quattro" value={content} onChange={handleChange}
-                        className="w-[37vw] h-[60vh] ml-4 p-2 absolute top-[19vh] left-[8vw] bg-transparent overflow-auto whitespace-normal" placeholder="Start writing here...">
+                        <textarea id="quattro" value={content} onChange={handleChange} placeholder="Start writing here..."
+                        className="w-[37vw] h-[60vh] ml-4 p-2 absolute top-[19vh] left-[8vw] bg-transparent overflow-auto whitespace-normal outline-none">
                         </textarea>
 
                         <img src={entry} alt="journal entry" className="h-screen w-[55vw] p-5" />
