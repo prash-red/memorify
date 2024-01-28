@@ -10,6 +10,7 @@ from memorify_app.models import JournalEntry, Contact, UserAccount
 from memorify_app.response_model import response_model
 from memorify_app.serializers import ContactSerializer
 
+from  llm_ai import LLM_AI
 
 # Create your views here.
 
@@ -18,16 +19,19 @@ def split_content(content):
 
 
 def extract_characters(content):
-    return ["Saul", "Walt", "Jesse"]
+    llm_ai = LLM_AI()
+    return llm_ai.get_character_list(content)
 
 
 def generate_title(content):
-    return "Lorem ip"
+    llm_ai = LLM_AI()
+    return llm_ai.generate_title(content)
 
 
 def get_new_description(description, content):
-    return ""
-
+    llm_ai = LLM_AI()
+    new_description = llm_ai.modify_personality(content, description)
+    return new_description
 
 def create_avatar(description):
     return 0
