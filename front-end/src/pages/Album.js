@@ -16,9 +16,12 @@ import sar from "./assets/sar-avatar.png";
 import empty from "./assets/placeholder.jpeg";
 
 import { useState } from "react";
+import {Read} from "./Read";
 
 export const Album = () => {
     const navigate = useNavigate();
+    const [showRead, setShowRead] = useState(false); // State to track whether to show the Read component
+    const [selectedEntry, setSelectedEntry] = useState(null); // State to store the selected entry
 
     const [profiles, setProfiles] = useState([
         {"name": "Jon", "contact": "jonvin123@gmail.com", "avatar": jon,
@@ -28,13 +31,13 @@ export const Album = () => {
     },
         {"name": "Sarva", "contact": "srv002@hotmail.com", "avatar": pra,
         "entries": [{"title": "Yum!", "content": "Today unfolded like a vibrant canvas, painted by the diverse personalities and passions of the people I encountered. The morning kicked off with a coffee catch-up with Jon, a spirited adventurer whose stories of recent hikes infused the day with a sense of wanderlust. Over lunch, Prashanth, the resident foodie, guided us to a hidden gem of a restaurant, turning an ordinary meal into a culinary journey filled with flavors and anecdotes. The afternoon brought a delightful surprise as Emily, the artistic soul, paid a visit. Armed with her sketchbook, we dove into a creative session, exploring  her latest art project and discussing the intricate details of her work. Emily's ability to find beauty in the ordinary added an artistic touch to the day. Reflecting on these interactions, I am reminded of the beautiful mosaic that unfolds when different personalities and passions converge. Jon's adventurous spirit, Prashanth's culinary expertise, and Emily's artistic flair created a day filled with unique hues and textures. Grateful for the richness these connections bring to my life."},
-        {"title": "Hiking", "content": "Today's hiking expedition with Prashanth proved to be a delightful revelation, offering glimpses into facets of his personality I hadn't known before. Renowned for his culinary expertise, Prashanth exhibited an unexpected proficiency in navigating the trails, his connection to nature apparent in the ease with which he pointed out interesting flora and shared insightful anecdotes about our surroundings. Amidst the beauty of the outdoors, Prashanth opened up about his childhood spent in a serene village surrounded by nature. He spoke with nostalgia about his grandmother, an avid gardener, whose influence instilled in him a profound appreciation for the environment. Learning about this side of Prashanth—his roots deeply intertwined with the beauty of the natural world—added a new dimension to our friendship. Reaching the summit, I couldn't help but marvel at the panoramic view, which seemed to mirror the diverse layers of Prashanth's personality. Today's hiking excursion became more than a physical adventure; it evolved into a shared journey of discovery, unraveling the unexpected layers of my friend's past. Grateful for the moments of revelation that deepen the tapestry of our friendship."},
+        {"title": "Hiking", "content": "Today's hiking expedition with Prashanth proved to be a delightful revelation, offering glimpses into facets of his personality I hadn't known before. Renowned for his culinary expertise, Prashanth exhibited an unexpected proficiency in navigating the trails, his connection to nature apparent in the ease with which he pointed out interesting flora and shared insightful anecdotes about our surroundings. Amidst the beauty of the outdoors, Prashanth opened up about his childhood spent in a serene village surrounded by nature. He spoke with nostalgia about his grandmother, an avid gardener, whose influence instilled in him a profound appreciation for the environment. Learning about this side of Prashanth—his roots deeply intertwined with the beauty of the natural world—added a new dimension to our friendship. Reaching the summit, I couldn't help but marvel at the panoramic view, which seemed to mirror the diverse layers of Prashanth's personality."},
         {"title": "Creativity", "content": "Today Prashanth and I delved into spontaneous artistry, a departure from our usual routine. Armed with canvases and paints, we created a collaborative masterpiece. Prashanth's bold strokes unveiled a side of him I hadn't seen, accompanied by stories of his childhood fascination with art. It was a refreshing exploration beyond our usual topics, a reminder of the hidden dimensions within each person waiting to be uncovered through shared expressions. Grateful for the unexpected artistry that added a new layer to our friendship."},
-        {"title": "Exploring Art", "content": "Today was a vibrant journey into the artistic world with Prashanth. We decided to explore a local art fair, immersing ourselves in a world of creativity. The air was filled with the lively energy of artists showcasing their work, and each exhibit seemed to tell a unique story. Prashanth, known for his appreciation of art, shared insightful perspectives on various pieces. His passion for creativity emerged as we discussed paintings, sculptures, and installations, uncovering the diverse interpretations each artwork evoked. As we strolled through the fair, Prashanth opened up about his early experiences with art. He spoke fondly of a childhood fascination with sketching and how it evolved into a lifelong appreciation for different forms of artistic expression. The day concluded with a visit to a local gallery, where we found ourselves captivated by a stunning collection. Prashanth's commentary added depth to our experience, transforming a casual outing into an exploration of the profound impact art can have on one's perspective.Grateful for the artistic inspiration, the shared reflections, and the enriching moments with Prashanth."}
+        {"title": "Exploring Art", "content": "Today was a vibrant journey into the artistic world with Prashanth. We decided to explore a local art fair, immersing ourselves in a world of creativity. The air was filled with the lively energy of artists showcasing their work, and each exhibit seemed to tell a unique story. Prashanth, known for his appreciation of art, shared insightful perspectives on various pieces. His passion for creativity emerged as we discussed paintings, sculptures, and installations, uncovering the diverse interpretations each artwork evoked. As we strolled through the fair, Prashanth opened up about his early experiences with art. He spoke fondly of a childhood fascination with sketching and how it evolved into a lifelong appreciation for different forms of artistic expression. The day concluded with a visit to a local gallery, where we found ourselves captivated by a stunning collection. Prashanth's commentary added depth to our experience, transforming a casual outing into an exploration of the profound impact art can have on one's perspective."}
     ]
     },
         {"name": "Sarah", "contact": "sasawwang@gmail.com", "avatar": sar,
-        "entries": [{"title": "Theme Park", "content": "Today was a day filled with laughter and spontaneity with Jon. We decided to escape the daily grind and indulge in a nostalgic adventure at the amusement park. From the adrenaline rush of roller coasters to the simple joy of cotton candy, every moment was a reminder of the carefree days of our youth. Jon, typically known for his calm demeanor, surprised me with his infectious enthusiasm for thrilling rides. His laughter echoed through the park, turning each twist and turn into an exhilarating experience. It was a side of Jon I hadn't seen before, and witnessing his joy added a vibrant energy to our day. Amidst the chaos of the amusement park, Jon shared childhood stories of annual family outings to similar places. It was heartwarming to learn about the traditions that shaped his love for such adventures. His nostalgic tales created a bridge between the past and the present, turning a simple day at the park into a journey through time. As we relished the simple pleasures of the day – from winning goofy prizes at carnival games to capturing silly selfies – I couldn't help but appreciate the beauty of friendship that transcends the ordinary. These moments with Jon were a refreshing reminder to embrace spontaneity and find joy in the unexpected. Grateful for the laughter, the shared memories, and the unexpected adventure with Jon."},
+        "entries": [{"title": "Theme Park", "content": "Today was a day filled with laughter and spontaneity with Jon. We decided to escape the daily grind and indulge in a nostalgic adventure at the amusement park. From the adrenaline rush of roller coasters to the simple joy of cotton candy, every moment was a reminder of the carefree days of our youth. Jon, typically known for his calm demeanor, surprised me with his infectious enthusiasm for thrilling rides. His laughter echoed through the park, turning each twist and turn into an exhilarating experience. It was a side of Jon I hadn't seen before, and witnessing his joy added a vibrant energy to our day. Amidst the chaos of the amusement park, Jon shared childhood stories of annual family outings to similar places. It was heartwarming to learn about the traditions that shaped his love for such adventures. His nostalgic tales created a bridge between the past and the present, turning a simple day at the park into a journey through time."},
     ]
     }
     ]);
@@ -52,7 +55,18 @@ export const Album = () => {
         if (!(current + 2 > profiles.length)) { setCurrent(current+2); }
     }
 
-    return (
+    const handleButtonClick = (entry) => {
+        console.log(entry)
+        setSelectedEntry(entry);
+        setShowRead(true);
+        console.log("hi")
+    };
+
+    return (showRead ? (<Read
+                title={selectedEntry.title}
+                time={selectedEntry.date}
+                content={selectedEntry.content}
+            />):(
         <div className="h-screen w-screen flex flex-row" style={{ backgroundImage: `url(${newparchment})` }}>
             <div className="h-full w-1/2 flex flex-col items-center border-r-2 border-[#855048]">
                 <div className="h-3/4 w-10/12">
@@ -80,7 +94,7 @@ export const Album = () => {
                         <div className="w-1/2 h-full flex flex-col items-center overflow-y-auto">
                             {profiles[current].entries.map((s) => {
                                 return(
-                                <button className="relative">
+                                <button className="relative" onClick={()=>handleButtonClick(s)}>
                                     <img src={scroll} alt="Rolled up scroll" />
                                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">{s.title}</span>
                                 </button>
@@ -107,7 +121,7 @@ export const Album = () => {
                             {(current < profiles.length-1) ?
                             (profiles[current+1].entries.map((s) => {
                                 return(
-                                <button className="relative">
+                                <button className="relative" onClick={() => handleButtonClick(s)}>
                                     <img src={scroll} alt="Rolled up scroll" />
                                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">{s.title}</span>
                                 </button>
@@ -129,7 +143,7 @@ export const Album = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>)
     
     )
 }
