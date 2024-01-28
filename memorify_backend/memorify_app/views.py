@@ -1,3 +1,6 @@
+import os
+import sys
+from django.http import FileResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -10,7 +13,10 @@ from memorify_app.models import JournalEntry, Contact, UserAccount
 from memorify_app.response_model import response_model
 from memorify_app.serializers import ContactSerializer, JournalEntrySerializer
 
-from  llm_ai import LLM_AI
+from  memorify_app.llm_ai import LLM_AI
+import time
+from memorify_app.discord import User
+from memorify_app.kintone import Kintone
 
 # Create your views here.
 
@@ -33,8 +39,12 @@ def get_new_description(description, content, character):
     new_description = llm_ai.modify_personality(content, character,description)
     return new_description
 
-def create_avatar(description, art_style):
-    return 0
+def create_avatar(discord, description, art_style):
+    discord.generate_avatar(description, art_style)
+    time.sleep(70)
+    image = discord.download_image(1)
+    kintone = Kintone()
+    return kintone.upload_file(image)
 
 
 class JournalEntryView(views.APIView):
@@ -66,13 +76,13 @@ class JournalEntryView(views.APIView):
         # entries_content: list[str] = split_content(content)
         main_characters: list[str] = extract_characters(content)
         for character in main_characters:
-            contact = user.contact_set.filter(name=character)[0]
+            contact = user.contact_set.filter(name=character).first()
             print("hi")
             if not contact:
-                contact = Contact(name=character)
+                contact = Contact(name=character, photo_id=0)
                 contact.user = user
-            contact.description = get_new_description(contact.description, entry.content)
-            contact.photo_id = create_avatar(contact.description)
+            contact.description = get_new_description(contact.description, entry.content, contact.name)
+            #contact.photo_id = create_avatar(contact.description, data['artStyle'])
             contact.save()
             contact.journal_entries.add(entry)
             contact.save()
@@ -91,6 +101,7 @@ class CharacterNamesView(views.APIView):
             response = response_model(status=status.HTTP_400_BAD_REQUEST, message='no album title provided')
             return Response(status=status.HTTP_400_BAD_REQUEST, data=response)
         journal_entries = user.journalentry_set.filter(title=title)
+        print(journal_entries)
         journal_entry = journal_entries[0]
         deserialized_data = ContactSerializer(journal_entry.contact_set, many=True)
         response = response_model(status=status.HTTP_200_OK, message='Contacts displayed',
@@ -98,13 +109,24 @@ class CharacterNamesView(views.APIView):
         return Response(data=response, status=status.HTTP_200_OK)
 
     def post(self, request):
+        with open('memorify_app/account.txt') as f:
+            email = f.readline().strip()
+            password = f.readline().strip()
+
+        discord = User(email, password, 'https://discord.com/login')
+
+        discord.login()
+        time.sleep(5)
+        discord.select_midjourney()
+        time.sleep(3)
+        
         user: UserAccount = self.request.user
         data = JSONParser().parse(request)
         art_style = data['artStyle']
         contact_dict = {contact.name: contact for contact in user.contact_set.all()}
         for character in data['characters']:
             contact_dict[character['name']].email = character['email']
-            contact_dict[character['name']].photo_id = create_avatar(contact_dict[character['name']].description, art_style)
+            contact_dict[character['name']].photo_id = create_avatar(discord, contact_dict[character['name']].description, art_style)
             contact_dict[character['name']].save()
         response = response_model(status=status.HTTP_200_OK, message='Contacts updated')
         return Response(data=response, status=status.HTTP_200_OK)
@@ -132,3 +154,17 @@ class ContactEntryView(views.APIView):
         response = response_model(status=status.HTTP_200_OK, message='Journal entries displayed',
                                   details=deserialized_data.data)
         return Response(data=response, status=status.HTTP_200_OK)
+
+class AvatarView(views.APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = self.request.user
+        name = self.request.query_params.get("name")
+        contact: Contact = user.contact_set.filter(name=name)[0]
+        kintone = Kintone()
+        file = kintone.download_file(contact.photo_id)
+        response = FileResponse(file)
+        response['Content-Disposition'] = f'attachment; filename="image.png"'
+        response['Content-Type'] = 'image/png'
+        return response
