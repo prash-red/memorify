@@ -7,6 +7,7 @@ import { Characters } from './pages/Characters';
 import { Gallery } from './pages/Gallery';
 import {Login} from "./pages/Login";
 import {Signup} from "./pages/Signup";
+import {Read} from "./pages/Read";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+              <Route path="/read" element={<Read />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/album" element={<Album />} />
             <Route path="/characters" element={<Characters />} />
