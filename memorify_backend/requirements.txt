@@ -48,3 +48,4 @@ urllib3==1.26.2
 views==0.3
 webencodings==0.5.1
 yfinance==0.2.22
+selenium==4.17.2
