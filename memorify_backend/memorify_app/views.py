@@ -8,7 +8,7 @@ from rest_framework import views, status
 
 from memorify_app.models import JournalEntry, Contact, UserAccount
 from memorify_app.response_model import response_model
-from memorify_app.serializers import ContactSerializer
+from memorify_app.serializers import ContactSerializer, JournalEntrySerializer
 
 from  llm_ai import LLM_AI
 
@@ -33,7 +33,7 @@ def get_new_description(description, content, character):
     new_description = llm_ai.modify_personality(content, character,description)
     return new_description
 
-def create_avatar(description):
+def create_avatar(description, art_style):
     return 0
 
 
@@ -94,5 +94,41 @@ class CharacterNamesView(views.APIView):
         journal_entry = journal_entries[0]
         deserialized_data = ContactSerializer(journal_entry.contact_set, many=True)
         response = response_model(status=status.HTTP_200_OK, message='Contacts displayed',
+                                  details=deserialized_data.data)
+        return Response(data=response, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        user: UserAccount = self.request.user
+        data = JSONParser().parse(request)
+        art_style = data['artStyle']
+        contact_dict = {contact.name: contact for contact in user.contact_set.all()}
+        for character in data['characters']:
+            contact_dict[character['name']].email = character['email']
+            contact_dict[character['name']].photo_id = create_avatar(contact_dict[character['name']].description, art_style)
+            contact_dict[character['name']].save()
+        response = response_model(status=status.HTTP_200_OK, message='Contacts updated')
+        return Response(data=response, status=status.HTTP_200_OK)
+
+
+class ContactsView(views.APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = self.request.user
+        deserialized_data = ContactSerializer(user.contact_set.all(), many=True)
+        response = response_model(status=status.HTTP_200_OK, message='Contacts displayed',
+                                  details=deserialized_data.data)
+        return Response(data=response, status=status.HTTP_200_OK)
+
+
+class ContactEntryView(views.APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = self.request.user
+        name = self.request.query_params.get("name")
+        contact: Contact = user.contact_set.filter(name=name)[0]
+        deserialized_data = JournalEntrySerializer(contact.journal_entries.order_by('-date').values(), many=True)
+        response = response_model(status=status.HTTP_200_OK, message='Journal entries displayed',
                                   details=deserialized_data.data)
         return Response(data=response, status=status.HTTP_200_OK)

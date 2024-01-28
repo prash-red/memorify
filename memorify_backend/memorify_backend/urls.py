@@ -43,5 +43,7 @@ urlpatterns += [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('entry/', memorify_app.views.JournalEntryView.as_view()),
-    path('entry/contacts/', memorify_app.views.CharacterNamesView.as_view())
+    path('entry/contacts/', memorify_app.views.CharacterNamesView.as_view()),
+    path('contacts/', memorify_app.views.ContactsView.as_view()),
+    path('contacts/entry', memorify_app.views.ContactEntryView.as_view())
 ]
