@@ -9,7 +9,7 @@ import topright from "./assets/top-right.png";
 import botleft from "./assets/bot-left.png";
 import botright from "./assets/bot-right.png";
 import write from "./assets/write.png";
-
+import scroll from "./assets/scroll.png";
 
 export const Album = () => {
     const navigate = useNavigate();
@@ -43,11 +43,29 @@ export const Album = () => {
                             </div>
                         </div>
 
-                        <div className="w-1/2 h-full flex flex-col items-center">
-                            <span>SCROLL 1</span>
-                            <span>SCROLL 2</span>
-                            <span>SCROLL 3</span>
+                        <div className="w-1/2 h-full flex flex-col items-center overflow-y-auto">
+                            <button className="relative">
+                                <img src={scroll} alt="Rolled up scroll" />
+                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 1</span>
+                            </button>
+                            <button className="relative">
+                                <img src={scroll} alt="Rolled up scroll" />
+                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 2</span>
+                            </button>
+                            <button className="relative">
+                                <img src={scroll} alt="Rolled up scroll" />
+                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 3</span>
+                            </button>
+                            <button className="relative">
+                                <img src={scroll} alt="Rolled up scroll" />
+                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 4</span>
+                            </button>
+                            <button className="relative">
+                                <img src={scroll} alt="Rolled up scroll" />
+                                <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 5</span>
+                            </button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -63,14 +81,31 @@ export const Album = () => {
                     </div>
 
                     <div id="quattro" className="w-full h-1/3 text-xl text-left mt-10 flex flex-row">
-                        <div className="w-1/2 h-full flex flex-col items-center">
-                            <span>SCROLL 1</span>
-                            <span>SCROLL 2</span>
-                            <span>SCROLL 3</span>
+                        <div className="w-1/2 h-full flex flex-col items-center overflow-y-auto">
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 1</span>
+                                </button>
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 2</span>
+                                </button>
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 3</span>
+                                </button>
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 4</span>
+                                </button>
+                                <button className="relative">
+                                    <img src={scroll} alt="Rolled up scroll" />
+                                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#6A482F]">ENTRY 5</span>
+                                </button>
                         </div>
 
                         <div className="w-1/2 h-full flex flex-col justify-between">
-                            <div className="w-full h-full flex flex-col">
+                            <div className="w-full h-full flex flex-col text-right">
                                 <span>John Doe </span>
                                 <span>john.doe@google.com</span>
                             </div>
