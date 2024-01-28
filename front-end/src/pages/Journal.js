@@ -7,7 +7,7 @@ import { useState } from "react";
 export const Journal = () => {
     const navigate = useNavigate();
     const handleButtonClick = () => {
-        // navigate("/input")
+        navigate("/contacts")
     }
 
     const [content, setContent] = useState("");
@@ -39,7 +39,7 @@ export const Journal = () => {
                         <button
                             id="button-shadow"
                             className="bg-[#61544C] font-semibold text-lg text-[#DDD0C8] py-2 px-14 mt-12 ml-4"
-                            onClick={() => { console.log(content) }}
+                            onClick={handleButtonClick}
                         >
                             SAVE
                         </button>
