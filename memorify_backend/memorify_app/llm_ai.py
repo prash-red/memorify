@@ -1,8 +1,10 @@
 import cohere
-
+import dotenv
+import os
 class LLM_AI:
     def __init__(self):
-        self.cohere = cohere.Client()
+        dotenv.load_dotenv()
+        self.cohere = cohere.Client(os.getenv("CO_API_KEY"))
 
     def get_character_list(self, journal_entry: str) -> list[str]:
         """Returns a list of characters in a journal entry"""
@@ -14,7 +16,7 @@ class LLM_AI:
     
     def generate_title(self, journal_entry: str) -> str:
         """Generates a title based on a journal entry"""
-        prompt = f'Journal Entry: {journal_entry}\n Generate a title for this journal entry. The title should be just one sentence. Dont include anything else'
+        prompt = f'Journal Entry: {journal_entry}\n Generate a single sentence respoonse. The response must be ONLY the title for this journal entry. The title should be just one sentence. Dont include anything else'
         response = self.cohere.generate(
             prompt
         )
