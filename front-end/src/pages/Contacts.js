@@ -5,6 +5,7 @@ import newparc from "./assets/new-parchment.png"
 import list from "./assets/contact-list.png"
 import oldparchment from "./assets/old-parchment.png";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export const Contacts = () =>{
     const [artStyle, setArtStyle] = useState('The Simpsons');
@@ -17,6 +18,9 @@ export const Contacts = () =>{
     const handleLooney = () =>{
         setArtStyle('Looney Tunes')
     }
+    const navigate = useNavigate();
+
+    const handleButtonClick = (destination) => { navigate(`/${destination}`) }
     return (
         <>
             <div className="flex flex-row h-screen w-screen" style={{ backgroundImage: `url(${oldparchment})` }}>
@@ -26,31 +30,31 @@ export const Contacts = () =>{
 
                         <div className="mb-4 flex w-full items-center justify-between">
                             <label id="playfair" className="text-[#6A482F] text-2xl">
-                                NAME
+                                JON
                             </label>
-                            <input id="cinzel-light" type="text"className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
+                            <input id="cinzel-light" type="text" className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
                         </div>
 
                         <div className="mb-4 flex w-full items-center justify-between">
                             <label id="playfair" className="text-[#6A482F] text-2xl">
-                                NAME
+                                PRASHANTH
                             </label>
-                            <input id="cinzel-light" type="text"className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
-                        </div>
-                        
-                        <div className="mb-4 flex w-full items-center justify-between">
-                            <label id="playfair" className="text-[#6A482F] text-2xl">
-                                NAME
-                            </label>
-                            <input id="cinzel-light" type="text"className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
+                            <input id="cinzel-light" type="text" className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
                         </div>
 
                         <div className="mb-4 flex w-full items-center justify-between">
                             <label id="playfair" className="text-[#6A482F] text-2xl">
-                                NAME
+                                SARAH
                             </label>
-                            <input id="cinzel-light" type="text"className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
+                            <input id="cinzel-light" type="text" className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>
                         </div>
+
+                        {/*<div className="mb-4 flex w-full items-center justify-between">*/}
+                        {/*    <label id="playfair" className="text-[#6A482F] text-2xl">*/}
+                        {/*        NAME*/}
+                        {/*    </label>*/}
+                        {/*    <input id="cinzel-light" type="text"className="ml-9 text-2xl bg-transparent border-b-2 border-[#855048] outline-none"/>*/}
+                        {/*</div>*/}
 
 
                         
@@ -92,7 +96,7 @@ export const Contacts = () =>{
                                 </button>
                             </div>
                     </div>
-                    <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium mt-[30vh] ml-[55vh] text-[#DDD0C8]" onClick={() => {}} >Next</button>
+                    <button id="button-shadow" className="bg-[#61544C] py-2 px-14 font-medium mt-[30vh] ml-[55vh] text-[#DDD0C8]" onClick={()=>handleButtonClick('album')} >Next</button>
                 </div>
 
 
