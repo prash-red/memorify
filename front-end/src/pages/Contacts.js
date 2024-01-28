@@ -2,8 +2,10 @@ import simpsons from "./assets/simpsons.png"
 import marvel from "./assets/marvel.png"
 import looney from "./assets/looney.png"
 import newparc from "./assets/new-parchment.png"
+import list from "./assets/contact-list.png"
 import oldparchment from "./assets/old-parchment.png";
 import {useState} from "react";
+
 export const Contacts = () =>{
     const [artStyle, setArtStyle] = useState('The Simpsons');
     const handleSimpsons = ()=>{
@@ -67,7 +69,7 @@ export const Contacts = () =>{
                         />
                     </button>
                     <button onClick={handleMarvel} className="relative" style={{ top: '10rem', left:'10rem' }}><img src={marvel} alt="marvel" className={artStyle === "Marvel" ? "h-[45vh]" : "h-[38vh]"}/></button>
-                    <button onClick={handleLooney} className="relative" style={{ top: '18rem', right:'20rem' }}><img src={looney} alt="looney" className={artStyle === "Looney Tunes" ? "h-[45vh]" : "h-[38vh]"} /></button>
+                    <button onClick={handleLooney} className="relative" style={{ top: '18rem', right:'20rem' }}><img src={looney} alt="looney" className={artStyle === "Looney Tunes" ? "h-[30vh]" : "h-[30vh]"} /></button>
                 </div>
 
 
