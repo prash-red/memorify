@@ -45,5 +45,6 @@ urlpatterns += [
     path('entry/', memorify_app.views.JournalEntryView.as_view()),
     path('entry/contacts/', memorify_app.views.CharacterNamesView.as_view()),
     path('contacts/', memorify_app.views.ContactsView.as_view()),
-    path('contacts/entry', memorify_app.views.ContactEntryView.as_view())
+    path('contacts/entry', memorify_app.views.ContactEntryView.as_view()),
+    path('contact/avatar', memorify_app.views.AvatarView.as_view())
 ]

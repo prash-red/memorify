@@ -44,12 +44,12 @@ class User:
     def generate_avatar(self, personality_descrption: str, art_style: str):
         """Generate avatar based on personality and art style"""
         prompt = f'/imagine Art Style: {art_style}, Generate an avatar based on the Personality: {personality_descrption} and art style. The avatar should be a cartoon image of the character with the given personality and art style --aspect 5:4'
-        self.driver.find_element(By.CSS_SELECTOR, 'span.emptyText_c03d90').send_keys(prompt, Keys.ENTER)
+        self.driver.find_element(By.CSS_SELECTOR, 'span.emptyText_c03d90').send_keys('/imagine', Keys.ENTER)
         self.driver.find_element(By.CSS_SELECTOR, 'span.emptyText_c03d90').send_keys(prompt, Keys.ENTER)
         self.log(prompt)
         
 
-    def download_image(self, num: int) -> bytes: 
+    def download_image(self, num: int) -> str: 
         """downloads the image and returns the image as bytes"""
         image_url = self.driver.find_elements(By.CLASS_NAME, "originalLink__94d5d")[-1].get_attribute('href')
         response = requests.get(image_url) 
@@ -61,10 +61,14 @@ class User:
         right = left + width/2
         bottom = top + height/2
         im = im.crop((left, top, right, bottom))
-        # im.save('image' + str(num) + '.png')
-        return im.tobytes()
+        im.save('image.png')
+        return 'image.png'
 
     def log(self, msg):
         """Msg log"""
         t = datetime.now().strftime('%H:%M:%S')
         print(f'[{t}] MESSAGE: {msg}')
+
+    def close(self):
+        """Close the browser"""
+        self.driver.close()
