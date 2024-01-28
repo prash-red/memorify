@@ -28,9 +28,9 @@ def generate_title(content):
     return llm_ai.generate_title(content)
 
 
-def get_new_description(description, content):
+def get_new_description(description, content, character):
     llm_ai = LLM_AI()
-    new_description = llm_ai.modify_personality(content, description)
+    new_description = llm_ai.modify_personality(content, character,description)
     return new_description
 
 def create_avatar(description):
