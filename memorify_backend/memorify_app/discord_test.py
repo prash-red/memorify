@@ -1,4 +1,4 @@
-from memorify_backend.memorify_app.discord import User
+from discord import User
 import time
 from llm_ai import LLM_AI
 
